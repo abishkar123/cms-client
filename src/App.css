@@ -1,3 +1,12 @@
 .main{
-    min-height: 50vh;
+    min-height: 80vh;
+}
+
+.register-page form{
+    max-width: 450px;
+    margin: 50px;
+}
+
+.register-page form{
+    
 }

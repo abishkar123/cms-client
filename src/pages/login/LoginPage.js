@@ -5,9 +5,11 @@ import { Header } from '../layout/Header'
 export const LoginPage = () => {
   return (
     <div>
-
         <Header/>
-    <div className="main login-page">This is Login Page</div> 
+    <div className="main login-page">
+      
+      
+    </div> 
     <Footer/>
     </div>
   )
