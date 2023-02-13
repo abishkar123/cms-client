@@ -10,3 +10,12 @@
 .register-page form{
     
 }
+
+.login-page form{
+    width: 450px;
+    margin: auto;
+    margin-top: 3rem;
+    border: 1px solid rgba(105, 97, 97, 0.758);
+    padding: 1.5rem;
+    /* border-radius: ; */
+}
