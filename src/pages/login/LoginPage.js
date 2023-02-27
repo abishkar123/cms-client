@@ -1,12 +1,20 @@
-import React,{useRef} from 'react'
+import React,{useEffect, useRef} from 'react'
 import { Footer } from '../layout/Footer'
 import { Header } from '../layout/Header'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginAction } from './authAction';
+import {Spinner} from 'react-bootstrap'
+import { useNavigate,Link } from 'react-router-dom';
+
 
 export const LoginPage = () => {
+  const dispatch = useDispatch();
   const emailRef = useRef("");
   const passRef = useRef("");
+  const {isLoading, user} = useSelector((state)=> state.user)
+  const navigate = useNavigate();
 
 
   const handleOnSubmit = e =>{
@@ -16,13 +24,21 @@ export const LoginPage = () => {
        email: emailRef.current.value,
        password: passRef.current.value,
     }
-   
-    console.log(formDt)
+   // call axios helper to call the api 
+    if(!formDt.email || !formDt.password){
+      return alert("please fill in the both the fields")
+    }
+    dispatch(loginAction(formDt))
   }
+
+  useEffect(()=>{
+    user?._id && navigate("/dashboard")
+  },[user, navigate])
+
 
   return (
     <div>
-     <Header/>
+    <Header/>
     <div className="main login-page">
     <Form className='shoadow-lg rounded' onSubmit={handleOnSubmit} required>
       <h3 className='text-center'> Login Page</h3>
@@ -46,10 +62,20 @@ export const LoginPage = () => {
         required />
       </Form.Group>
       
-      
+      <div className='d-grid'>
       <Button variant="primary" type="submit">
-        Submit
+        {isLoading?
+        <Spinner variant='warning' animation='border '/>: "submit"}
+       
       </Button>
+      <hr/>
+     <span>Can't access your account? </span>
+      <Link to="/resetpassword" className='nav-link bg-bolder' >Forget Password</Link>
+
+      </div>
+      
+      
+
     </Form>
       
     </div> 
