@@ -1,47 +1,31 @@
-.main{
+.main {
     min-height: 80vh;
-}
-
-.register-page form{
+  }
+  .register-page form {
     max-width: 450px;
-    margin: 50px;
-}
-
-.register-page form{
-    
-}
-
-.login-page form{
+    margin: auto;
+  }
+  .login-page form {
     width: 450px;
     margin: auto;
     margin-top: 3rem;
-    border: 1px solid rgba(105, 97, 97, 0.758);
+    border: 1px solid rgba(240, 240, 240, 0.692);
     padding: 1.5rem;
-    /* border-radius: ; */
-}
-
-.side-bar{
-    height: 100vh;
-
-}
-
-.side-bar a{
+    /* border-radius: 10px; */
+  }
+  .side-bar {
+    min-height: 100vh;
+  }
+  .side-bar a {
     text-decoration: none;
     color: white;
     font-weight: 600;
-}
-
-.side-bar-item ul{
-    list-style: none;
+  }
+  .side-bar ul li {
+    list-style-type: none;
     margin-bottom: 2rem;
+  }
 
-}
-
-.resetpassword form{
-    width: 450px;
-    margin: auto;
-    margin-top: 4rem;
-    border: 1px solid rgba(154, 125, 125, 0.758);
-    padding: 1.5rem;
-    /* border-radius: ; */
-}
+  .sidebar-memu{
+    position: fixed;
+  }

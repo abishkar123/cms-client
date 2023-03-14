@@ -3,10 +3,14 @@ import {Link} from "react-router-dom";
 
 export const Sidebar = () => {
   return (
-    
+    <div className='sidebar-menu'>
+      <div className='mt-5'>
+      <div className="text-center fw-bolder">Admin Menu</div>
+      </div>
+      <hr />
     <div className='mt-5'>
           
-          <div className="sidebar-menu ">
+          
                 <ul>
                   <li>
                     <Link to="/dashboard">
@@ -40,7 +44,7 @@ export const Sidebar = () => {
                   </li>
                   <li>
                     <Link to="/setting">
-                      <i class="fa-solid fa-gear"></i> Setting
+                      <i className="fa-solid fa-gear"></i> Setting
                     </Link>
                   </li>
                 </ul>

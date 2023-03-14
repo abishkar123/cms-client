@@ -21,7 +21,7 @@ export const PaymentMethodsForm = () => {
        e.preventDefault(); 
        dispatch(postNewPaymentM(paydata));
 
-       console.log(paydata)
+      
     }
 
 
@@ -47,18 +47,22 @@ export const PaymentMethodsForm = () => {
          placeholder="Enter Payment Description"
         required
         onChange={handleOnChange} />
-      </Form.Group></Col>
-
-</Row>
-
-      <div className='d-grid'>
+      </Form.Group>
+      </Col>
+<Col>
+<div className='d-grid'>
       <Button variant="primary" type="submit">
-        submit
+        ADD
        
       </Button>
   
     
       </div>
+</Col>
+
+</Row>
+
+     
 
     </Form> 
     </div>

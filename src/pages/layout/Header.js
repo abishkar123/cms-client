@@ -11,6 +11,8 @@ export const Header =()=> {
   const {user }= useSelector(state=> state.user)
 
 const handleOnLogOut = e =>{
+  sessionStorage.removeItem('accessJWT')
+  localStorage.removeItem("refreshJWT")
 dispatch(requestSuccess({}));
 
 }

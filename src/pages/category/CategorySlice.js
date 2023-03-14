@@ -8,7 +8,7 @@ const catSlice = createSlice({
     initialState,
     reducers: {
       setCats: (state, { payload = [] }) => {
-        console.log(payload)
+       
         state.cats = payload;
       },
     },

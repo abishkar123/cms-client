@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./pages/login/authSlice";
 import catReducer from "./pages/category/CategorySlice";
-import systemReducer from "./system/systemSlice";
+import systemReducer from "./system/SystemSlice";
 import paymentMReducer from "./pages/paymentmethods/PaymentMSlice";
 
 const store = configureStore({

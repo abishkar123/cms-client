@@ -32,13 +32,13 @@ export const EditPayForm = ({selectPaymentM}) => {
         <Form onSubmit={handleOnSubmit} className="text-center border p-4 rounded shadow-lg">
             <Row>
                 <Col>
-                <Form.Select name="Status" onChange={handleOnChange}
+                <Form.Select name="status" onChange={handleOnChange}
                 required>
                     <option value="">--status --</option>
-                    <option value="inactive" selected={formdt.status === "inactive"  }>inactive</option>
-                    <option value="active" selected={formdt.status === "active"}>
-                Active
-              </option>
+                    <option value="inactive" >Inactive</option>
+                    <option value="active">active</option>
+            
+             
                 </Form.Select>
                 </Col>
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { setShowModal } from "../../system/systemSlice";
+import { setShowModal } from "../../system/SystemSlice";
 
 export const CustomModal = ({ title, children, ...props }) => {
   const dispatch = useDispatch();

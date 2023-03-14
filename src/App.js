@@ -9,6 +9,7 @@ import { Dashboard } from './pages/dashboard/Dashboard';
 import ResetPassword from './pages/reset password/ResetPassword';
 import { Category } from './pages/category/Category';
 import {PaymentMethods, paymentMethods} from './pages/paymentmethods/PaymentMethods'
+import { PrivateRouter } from './components/Private-router/PrivateRouter';
 
 
 
@@ -23,12 +24,21 @@ function App() {
   <Route path='/' element={<LoginPage/>} />
   <Route path='/verify' element={<NewAccVerify/>} />
   <Route path='/resetpassword' element={<ResetPassword/>} />
+  <Route path='/register' element={<RegisterPage/> } />
   
   {/* //Private router  */}
-  <Route path='/register' element={<RegisterPage/>} />
-  <Route path='/dashboard' element={<Dashboard/>} />
-  <Route path='/category' element={<Category/>} />
-  <Route path='/paymentMethods' element={<PaymentMethods/>} />
+  <Route path='/dashboard' element={
+    <PrivateRouter><Dashboard/></PrivateRouter>
+ 
+  } />
+  <Route path='/category' element={
+    <PrivateRouter><Category/></PrivateRouter>
+  
+  } />
+  <Route path='/paymentMethods' element={
+    <PrivateRouter><PaymentMethods/></PrivateRouter>
+  
+  } />
 
 
  

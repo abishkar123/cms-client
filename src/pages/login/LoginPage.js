@@ -4,9 +4,9 @@ import { Header } from '../layout/Header'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginAction } from './authAction';
+import { autoLogin, loginAction } from './authAction';
 import {Spinner} from 'react-bootstrap'
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate,Link, useLocation } from 'react-router-dom';
 
 
 export const LoginPage = () => {
@@ -15,6 +15,12 @@ export const LoginPage = () => {
   const passRef = useRef("");
   const {isLoading, user} = useSelector((state)=> state.user)
   const navigate = useNavigate();
+  const location = useLocation();
+
+
+  const origin = location?.state?.from?.pathname || "/dashboard";
+
+  console.log(origin)
 
 
   const handleOnSubmit = e =>{
@@ -32,8 +38,9 @@ export const LoginPage = () => {
   }
 
   useEffect(()=>{
-    user?._id && navigate("/dashboard")
-  },[user, navigate])
+    user?._id ? navigate(origin) : dispatch(autoLogin());
+    // TODO: make router private and auto login
+  },[user?._id, navigate, origin,dispatch])
 
 
   return (

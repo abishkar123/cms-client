@@ -1,9 +1,8 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
 import { PaymentMethodsForm } from '../../components/paymentMethods-form/PaymentMethodsForm'
 import { PaymentMTable } from '../../components/paymentMethods-form/PaymentMTable'
 import { AdminLoyout } from '../layout/AdminLoyout'
-import { Footer } from '../layout/Footer'
+
 
 
 export const PaymentMethods = () => {
@@ -19,10 +18,6 @@ export const PaymentMethods = () => {
             <PaymentMethodsForm/>
             <PaymentMTable/>
         </AdminLoyout>
-       
-
-     
-
         
     </div>
   )

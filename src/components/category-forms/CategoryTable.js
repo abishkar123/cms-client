@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteCat, fetchCats } from '../../pages/category/CategoryAction';
-import { setShowModal } from '../../system/systemSlice';
+import { setShowModal } from '../../system/SystemSlice';
 import { CustomModal } from '../custom-modal/CustomeModal';
 import { EditCatFrm } from './EditCatFrn';
 

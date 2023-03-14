@@ -6,23 +6,60 @@ const payMApi = rootUrl + "/paymentMethods";
 
 
 //admin
-const fetchProcesser = async ({ method, url, data})=>{
-  try{
-    console.log(method, url, data)
+const fetchProcesser = async ({ method, url, data, token, isPrivate})=>{
+  try {
+    // await axios.post(adminApi + "/register", data);
+    const jwtToken = token || sessionStorage.getItem("accessJWT");
+   
+    const headers = isPrivate
+      ? {
+          Authorization: jwtToken,
+        }
+      : null;
+
     const res = await axios({
       method,
-      url, 
+      url,
       data,
+      headers,
     });
 
-   
-return res.data;
-}catch(error){
-    return{
-   status:error,
-   message: error.message,
+    return res.data;
+  } catch (error) {
+    const message = error.message;
+
+    if (error?.response?.data?.message === "jwt expired") {
+      const { accessJWT } = await fetchNewAccessJWT();
+      sessionStorage.setItem("accessJWT", accessJWT);
+      return fetchProcesser({ method, url, data, isPrivate, token: accessJWT });
     }
-}
+
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+
+
+
+//   try{
+  
+//     const res = await axios({
+//       method,
+//       url, 
+//       data,
+//       headers: isPrivate 
+     
+
+      
+//     });
+// return res.data;
+// }catch(error){
+//     return{
+//    status:error,
+//    message: error.message,
+//     }
+// }
 };
 
 export const postNewAdmin = async (data) =>{
@@ -56,6 +93,16 @@ export const loginadmin = async (logindata)=>{
     method: "post",
     url,
     data: logindata,
+  };
+  return fetchProcesser(obj);
+};
+/// fetchadminprofile
+export const fetchadminprofile = async ()=>{
+  const url = adminApi + "/user-profile";
+  const obj = {
+    method: "get",
+    url,
+    isPrivate: true,
   };
   return fetchProcesser(obj);
 };
@@ -103,6 +150,7 @@ export const postCategory = async (data)=>{
     method: "post",
     url,
     data,
+    isPrivate:true,
   }
   return fetchProcesser(obj)
 }
@@ -110,6 +158,7 @@ export const fetchCategory = async () => {
   const url = catApi;
   const obj = {
     method: "get",
+    isPrivate:true,
     url,
   };
   return fetchProcesser(obj);
@@ -119,6 +168,7 @@ export const deleteCategory = async (_id) => {
   const obj = {
     method: "delete",
     url,
+    isPrivate:true,
   };
   return fetchProcesser(obj);
 };
@@ -128,6 +178,7 @@ export const updateCategory = async (data) => {
     method: "put",
     url,
     data,
+    isPrivate:true,
   };
   return fetchProcesser(obj);
 };
@@ -141,6 +192,7 @@ export const postpaymentMethod= (data)=>{
   method:"post",
   url,
   data,
+  isPrivate:true,
 
 
   }
@@ -153,6 +205,7 @@ export const postpaymentMethod= (data)=>{
   const obj = {
     method: "get",
     url,
+    isPrivate:true,
   };
   return fetchProcesser(obj);
 }
@@ -162,7 +215,7 @@ export const deleteaxiospaymentM = async (_id) => {
   const obj = {
     method: "delete",
     url,
-    data: _id,
+    isPrivate:true,
   };
   return fetchProcesser(obj);
 };
@@ -173,6 +226,20 @@ export const updateaxiospaymentM = async (data) => {
     method: "put",
     url,
     data,
+    isPrivate:true,
+  };
+  return fetchProcesser(obj);
+};
+
+export const fetchNewAccessJWT = async () => {
+  const url = adminApi + "/new-accessjwt";
+  const token = localStorage.getItem("refreshJWT");
+  
+  const obj = {
+    method: "get",
+    url,
+    isPrivate: true,
+    token,
   };
   return fetchProcesser(obj);
 };

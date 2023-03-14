@@ -8,7 +8,7 @@ const paymentMethodsSlice = createSlice({
     initialState,
     reducers: {
       setPaymentMethods: (state, { payload = [] }) => {
-        console.log(payload);
+       
         state.paymentMethods = payload;
       },
     },

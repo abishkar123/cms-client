@@ -13,8 +13,8 @@ export const AdminLoyout = ({children}) => {
   <Container fluid>
     <Row>
       <Col xs="3"className=' side-bar bg-dark  text-light'>
-         
-<Sidebar/>
+      
+        <Sidebar/>
          </Col>
       <Col>{children}</Col>
     </Row>
