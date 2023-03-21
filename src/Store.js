@@ -3,6 +3,7 @@ import authReducer from "./pages/login/authSlice";
 import catReducer from "./pages/category/CategorySlice";
 import systemReducer from "./system/SystemSlice";
 import paymentMReducer from "./pages/paymentmethods/PaymentMSlice";
+import productReducer from "./pages/products/productSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     category: catReducer,
     system: systemReducer,
     payments: paymentMReducer,
+    product: productReducer,
   },
 });
 

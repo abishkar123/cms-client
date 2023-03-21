@@ -190,9 +190,6 @@ const handleonplagination = num =>{
     <div>
     <Pagination size='lg'>{items}</Pagination>
     <br />
-
-    
-    
   </div>
 
 

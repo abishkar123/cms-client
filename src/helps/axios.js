@@ -3,6 +3,7 @@ const rootUrl = "http://localhost:8000/api/v1";
 const adminApi = rootUrl + "/admin";
 const catApi = rootUrl + "/category";
 const payMApi = rootUrl + "/paymentMethods";
+const productApi = rootUrl + "/product";
 
 
 //admin
@@ -240,6 +241,38 @@ export const fetchNewAccessJWT = async () => {
     url,
     isPrivate: true,
     token,
+  };
+  return fetchProcesser(obj);
+};
+
+///====== Products API
+export const fetchProduct = async () => {
+  const url = productApi;
+  const obj = {
+    method: "get",
+    url,
+    isPrivate: true,
+  };
+  return fetchProcesser(obj);
+};
+
+export const postProduct = async (data) => {
+  const url = productApi;
+  const obj = {
+    method: "post",
+    url,
+    data,
+    isPrivate: true,
+  };
+  return fetchProcesser(obj);
+};
+
+export const deleteproduct= async (_id) => {
+  const url = productApi + "/" + _id;
+  const obj = {
+    method: "delete",
+    url,
+    isPrivate:true,
   };
   return fetchProcesser(obj);
 };

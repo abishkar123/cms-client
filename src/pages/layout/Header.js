@@ -29,10 +29,17 @@ dispatch(requestSuccess({}));
 
           {user?._id ? (
               <>
-              <Link to="/" className='nav-link'><i className="fa-solid fa-bell" title='Notification'></i></Link>
-              <Link to="/register" className='nav-link'> <i className="fa-solid fa-right-to-bracket" title='User Profile'></i> </Link>
-            <Link to="/" className='nav-link'> <i class="fa-solid fa-user" title='LogOut'></i> </Link>
+          
+                <Link to="/register" className="nav-link">
+                  <i class="fa-solid fa-bell" title="Notifications"></i>
+                </Link>
+                <Link to="/register" className="nav-link">
+                  <i class="fa-solid fa-user-pen" title="User Profile"></i>
+                </Link>
 
+                <Link to="/" className="nav-link" onClick={handleOnLogOut}>
+                  <i class="fa-solid fa-right-to-bracket" title="Log out"></i>
+                </Link>
               </>
             ) : (
               <>

@@ -20,9 +20,6 @@ export const LoginPage = () => {
 
   const origin = location?.state?.from?.pathname || "/dashboard";
 
-  console.log(origin)
-
-
   const handleOnSubmit = e =>{
     e.preventDefault();
 
