@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteproductAction, getProductAction } from '../../pages/products/productAction';
+import {  deleteproductAction, getProductAction } from '../../pages/products/productAction';
 import Pagination from 'react-bootstrap/Pagination';
 import { Link } from 'react-router-dom';
 
@@ -11,12 +11,12 @@ const itemsPerTable = 3;
 export const ProductTable = () => {
   const [active ,setActive]= useState(1)
   const [showproduct, setShowproduct] = useState([]);
-  
+  const [ids, setIds] = useState([]);
   const dispatch=useDispatch()
   const {products} = useSelector((state)=> state.product);
 
   const startItem = (active - 1) * itemsPerTable;
-  const enditem =  startItem + itemsPerTable;
+  const  endItem =  startItem + itemsPerTable;
   
 let items = [];
 const numberOPPage = Math.ceil(showproduct.length / itemsPerTable);
@@ -44,19 +44,34 @@ const handleOnChange =(e)=>{
  }
 
   useEffect(()=>{
-    if(!showproduct.length){
-      dispatch(getProductAction());
+    if(!showproduct.length)
+    dispatch(getProductAction());{
+      
       setShowproduct(products)
     }
     
   }, [dispatch, products, showproduct])
 
-  const handleOnDelete = (_id)=>{
-    if(window.confirm("Are you sure you want to delete the prouct")){
-      dispatch(deleteproductAction(_id))
+  const handleOnSelect = (e) => {
+    const { checked, value } = e.target;
+
+    if (value === "all") {
+      checked ? setIds(products.map((item) => item._id)) : setIds([]);
+      return;
     }
-  }
+
+    checked
+      ? setIds([...ids, value])
+      : setIds(ids.filter((item) => item !== value));
+  };
  
+  const handleOnDelete = () => {
+    if (window.confirm("Are you sure you want to delete the product(s)")) {
+      dispatch(deleteproductAction(ids));
+ 
+      setIds([]);
+    }
+  };
   return (
     <div className="">
     <div className="mb-2">
@@ -76,7 +91,10 @@ const handleOnChange =(e)=>{
     <Table striped bordered hover>
       <thead>
         <tr>
-        <th>#</th>
+        <th>
+              #  {""}<input type="checkbox" value="all" onChange={handleOnSelect} />
+              </th>
+        
             <th> Thumbnail</th>
             <th> Status</th>
             <th> Name</th>
@@ -87,9 +105,20 @@ const handleOnChange =(e)=>{
         </tr>
       </thead>
       <tbody>
-      {products.map((item, i) => (
+        {showproduct?.length > 0 &&    
+        showproduct.map((item, i) =>
+        i >= startItem &&
+        i < endItem && 
+                 (
             <tr key={item._id}>
-              <td>{i + 1}</td>
+              <td>{i + 1} {""}
+              <input
+                  type="checkbox"
+                  value={item._id}
+                  onChange={handleOnSelect}
+                  checked={ids.includes(item._id)}
+                /></td>
+
               <td>
                 <img
                   src={"http://localhost:8000/" + item?.mainImage.substr(6)}
@@ -108,17 +137,19 @@ const handleOnChange =(e)=>{
                 <Button variant="warning">
                   <i className="fa-solid fa-pen-to-square"></i> Edit
                 </Button></Link>
-                {""}
-                <Button 
-                onClick={() => handleOnDelete(item._id)}
-                 variant="danger">
-                <i class="fa-solid fa-trash"></i> Delete
-                </Button>
+               
               </td>
             </tr>
           ))}
       </tbody>
     </Table>
+    {ids.length > 0 && (
+        <div className="d-grid mb-4">
+          <Button variant="danger" onClick={handleOnDelete}>
+            Delete {ids.length} Selected Items
+          </Button>
+        </div>
+      )}
     <div>
     <Pagination size='lg'>{items}</Pagination>
     <br />

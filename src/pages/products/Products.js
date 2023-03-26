@@ -17,7 +17,7 @@ export const Products = () => {
                 <Link to="/product/new">
                 <Button variant='outline-warning'>
                 <i class="fa-solid fa-plus"></i>
-                Add New Proudct
+                Add New Product
 
                 </Button>
                 </Link>

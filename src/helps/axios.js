@@ -246,8 +246,8 @@ export const fetchNewAccessJWT = async () => {
 };
 
 ///====== Products API
-export const fetchProduct = async () => {
-  const url = productApi;
+export const fetchProduct = async (_id) => {
+  const url = _id ? productApi + "/" + _id : productApi;
   const obj = {
     method: "get",
     url,
@@ -267,12 +267,25 @@ export const postProduct = async (data) => {
   return fetchProcesser(obj);
 };
 
-export const deleteproduct= async (_id) => {
-  const url = productApi + "/" + _id;
+export const deleteproduct= async (data) => {
+  const url = productApi;
   const obj = {
     method: "delete",
     url,
+    data,
     isPrivate:true,
+  };
+  return fetchProcesser(obj);
+};
+
+export const updateproduct= async (data) => {
+  const url = productApi;
+  console.log(data)
+  const obj = {
+    method: "put",
+    url,
+    isPrivate:true,
+    data
   };
   return fetchProcesser(obj);
 };

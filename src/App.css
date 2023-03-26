@@ -29,3 +29,13 @@
   .sidebar-memu{
     position: fixed;
   }
+
+
+  .add-product-page{
+    width: 30px;
+    margin: auto;
+    margin-top: 1rem;
+    border: 1.5px solid rgba(89, 123, 137, 0.644);
+    padding: 2rem;
+    
+  }

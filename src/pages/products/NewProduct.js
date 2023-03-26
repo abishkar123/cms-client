@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CustomeInputField } from '../../components/CustomeInputField/CustomeInputField';
@@ -100,7 +100,8 @@ export const NewProduct = () => {
 
   return ( 
 <AdminLoyout>
-    <div className='py-3 fs-2'> New Products</div>
+  <Container className='py-2 mt-2 add-product-page'>
+  <div className='py-3 fs-2'> New Products</div>
     <Link to="/products">{""}
       <Button variant='secondary'>&lt; Back</Button></Link>
     <hr/>
@@ -133,6 +134,8 @@ export const NewProduct = () => {
 
 
     </Form>
+  </Container>
+ 
     
 </AdminLoyout>
 
