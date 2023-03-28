@@ -9,20 +9,19 @@ import { AdminLoyout } from '../layout/AdminLoyout'
 import { postProductAction } from './productAction';
 
 const initialState = {
-  status:"inactive",
-}
+  status: "inactive",
+};
 
 export const NewProduct = () => {
     const [formdt, setFormdt]= useState(initialState)
     const dispatch = useDispatch();
     const [newImages, setNewImages] = useState([]);
 
-  const {cats} = useSelector((state)=>state.category)
-  
-  useEffect(()=>{
-    !cats.length && dispatch(fetchCats())
+    const {cats} = useSelector((state)=> state.category)
 
-  }, [cats.length,dispatch])
+    useEffect(()=>{
+      !cats.length && dispatch(fetchCats())
+    },[cats.length, dispatch])
 
     const handleOnChanges = e =>{
         const {name, value}= e.target;
@@ -35,6 +34,7 @@ export const NewProduct = () => {
 
     const handleOnSubmit = e =>{
         e.preventDefault();
+      
        const formData = new FormData();
       for (let key in formdt){
         formData.append(key, formdt[key]);
@@ -124,14 +124,18 @@ export const NewProduct = () => {
             name="status"
             type="switch"
             label="Status"
-            value="inactive"
+            
             >
             </Form.Check>
-
         </Form.Group>
-
-        <CustomeSelect arg={cats} func={handleOnChanges} name="parentCat"/>
         
+        <CustomeSelect
+        label="Category"
+  
+         args={cats} 
+         func={handleOnChanges}
+          name="parentCat"/>
+
         {inputes.map((item, i) => (
             <CustomeInputField
               key={i}

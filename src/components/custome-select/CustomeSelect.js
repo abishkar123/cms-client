@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
-import { Form } from 'react-bootstrap';
+import React, { useEffect } from "react";
+import { Form } from "react-bootstrap";
 
-export const CustomeSelect = ({args, func, label,selectedCat, name}) => {
-
+export const CustomeSelect = ({ label, args, func, name, selectedCat }) => {
   useEffect(() => {}, [selectedCat]);
-
+  
   return (
     <Form.Group className="mb-3">
       <label htmlFor="">{label}</label>
@@ -24,4 +23,4 @@ export const CustomeSelect = ({args, func, label,selectedCat, name}) => {
       </Form.Select>
     </Form.Group>
   );
-}
+};

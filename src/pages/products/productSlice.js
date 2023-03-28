@@ -16,6 +16,7 @@ const productSlice = createSlice({
       state.products = payload;
     },
     setSelectedProduct: (state, { payload }) => {
+      if (state.selectedProd._id === payload._id) return;
       state.selectedProd = payload;
     },
 
