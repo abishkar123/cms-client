@@ -9,8 +9,6 @@ export const Sidebar = () => {
       </div>
       <hr />
     <div className='mt-5'>
-          
-          
                 <ul>
                   <li>
                     <Link to="/dashboard">

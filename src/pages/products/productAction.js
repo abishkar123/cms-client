@@ -45,9 +45,8 @@ export const deleteproductAction = (arrg) => async (dispatch) => {
 };
 
 export const updateProductAction = (obj) => async (dispatch) => {
-  const respPromise = updateproduct(obj._id)
+  const respPromise = updateproduct(obj)
 
-  console.log(obj)
 
   toast.promise(respPromise, {
     pending: "Please wait....",

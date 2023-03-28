@@ -165,7 +165,7 @@ export const EditProduct = () => {
     
     <AdminLoyout>
       <div className="mb-3">
-        <div className="py-3 fs-2">New Product</div>
+        <div className="py-3 fs-2">Edit Product</div>
 
         <Link to="/products">
           {" "}
