@@ -23,7 +23,7 @@ export const NewProduct = () => {
       !cats.length && dispatch(fetchCats())
     },[cats.length, dispatch])
 
-    const handleOnChanges = e =>{
+    const handleOnChange = e =>{
         const {name, value}= e.target;
 
         setFormdt({
@@ -34,7 +34,8 @@ export const NewProduct = () => {
 
     const handleOnSubmit = e =>{
         e.preventDefault();
-      
+
+      console.log(formdt)
        const formData = new FormData();
       for (let key in formdt){
         formData.append(key, formdt[key]);
@@ -124,16 +125,14 @@ export const NewProduct = () => {
             name="status"
             type="switch"
             label="Status"
-            
             >
             </Form.Check>
         </Form.Group>
         
         <CustomeSelect
         label="Category"
-  
          args={cats} 
-         func={handleOnChanges}
+         func={handleOnChange}
           name="parentCat"/>
 
         {inputes.map((item, i) => (
@@ -141,7 +140,7 @@ export const NewProduct = () => {
               key={i}
               {...item}
               onChange={
-                item.name === "images" ? handlOnImageUplodad : handleOnChanges
+                item.name === "images" ? handlOnImageUplodad : handleOnChange
               }
             />
           ))}

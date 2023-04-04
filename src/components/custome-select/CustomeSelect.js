@@ -3,7 +3,6 @@ import { Form } from "react-bootstrap";
 
 export const CustomeSelect = ({ label, args, func, name, selectedCat }) => {
   useEffect(() => {}, [selectedCat]);
-  
   return (
     <Form.Group className="mb-3">
       <label htmlFor="">{label}</label>
@@ -11,7 +10,7 @@ export const CustomeSelect = ({ label, args, func, name, selectedCat }) => {
         name={name}
         required
         onChange={func}
-        value={selectedCat || ""}
+        value={selectedCat}
       >
         <option value="">select category</option>
         {args.length > 0 &&
