@@ -121,7 +121,7 @@ const handleOnChange =(e)=>{
 
               <td>
                 <img
-                  src={"http://localhost:8000/" + item?.mainImage.substr(6)}
+                  src={process.env.REACT_APP_DOMAIN + item?.mainImage.substr(6)}
                   width="80px"
                   alt="photos"
                 />
