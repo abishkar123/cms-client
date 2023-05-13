@@ -4,7 +4,7 @@ import catReducer from "./pages/category/CategorySlice";
 import systemReducer from "./system/SystemSlice";
 import paymentMReducer from "./pages/paymentmethods/PaymentMSlice";
 import productReducer from "./pages/products/productSlice";
-
+import orderReducer from "./pages/order/OrderSlice"
 const store = configureStore({
   reducer: {
     user: authReducer,
@@ -12,6 +12,7 @@ const store = configureStore({
     system: systemReducer,
     payments: paymentMReducer,
     product: productReducer,
+    order: orderReducer,
   },
 });
 

@@ -4,8 +4,9 @@ const adminApi = rootUrl + "/admin";
 const catApi = rootUrl + "/category";
 const payMApi = rootUrl + "/paymentMethods"
 const productApi = rootUrl + "/product";
+const orderApi = rootUrl + "/orders";
 
-
+ 
 
 //admin
 const fetchProcesser = async ({ method, url, data, token, isPrivate})=>{
@@ -104,7 +105,7 @@ export const fetchadminprofile = async ()=>{
   const obj = {
     method: "get",
     url,
-    isPrivate: true,
+   isPrivate: true,
   };
   return fetchProcesser(obj);
 };
@@ -290,3 +291,17 @@ export const updateproduct= async (data) => {
   };
   return fetchProcesser(obj);
 };
+
+
+//=== order API 
+export const getOrder= async (data) => {
+  const url = orderApi;
+  const obj = {
+    method: "get",
+    url,
+    data,
+    isPrivate: true,
+  };
+  return fetchProcesser(obj);
+};
+

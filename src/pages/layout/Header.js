@@ -6,7 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 import { requestSuccess } from '../login/authSlice';
 
 export const Header =()=> {
-  const dispatch = useDispatch
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const {user }= useSelector(state=> state.user)
 
@@ -29,6 +29,7 @@ dispatch(requestSuccess({}));
 
           {user?._id ? (
               <>
+             
           
                 <Link to="/register" className="nav-link">
                   <i class="fa-solid fa-bell" title="Notifications"></i>

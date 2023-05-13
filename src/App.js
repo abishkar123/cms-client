@@ -13,6 +13,7 @@ import { PrivateRouter } from './components/Private-router/PrivateRouter';
 import { Products } from './pages/products/Products';
 import { NewProduct } from './pages/products/NewProduct';
 import { EditProduct } from './pages/products/EditProduct';
+import { Order } from './pages/order/Order';
 
 
 
@@ -59,6 +60,11 @@ function App() {
   
   } />
 
+
+<Route path='/order' element={
+    <PrivateRouter> <Order/></PrivateRouter>
+  
+  } />
  
 
  

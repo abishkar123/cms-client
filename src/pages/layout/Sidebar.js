@@ -31,7 +31,7 @@ export const Sidebar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/orders">
+                    <Link to="/order">
                       <i className="fa-solid fa-truck"></i> Orders
                     </Link>
                   </li>
