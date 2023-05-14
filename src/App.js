@@ -14,6 +14,7 @@ import { Products } from './pages/products/Products';
 import { NewProduct } from './pages/products/NewProduct';
 import { EditProduct } from './pages/products/EditProduct';
 import { Order } from './pages/order/Order';
+import { EditOrder } from './pages/order/EditOrder';
 
 
 
@@ -63,6 +64,11 @@ function App() {
 
 <Route path='/order' element={
     <PrivateRouter> <Order/></PrivateRouter>
+  
+  } />
+
+<Route path='/order/:_id' element={
+    <PrivateRouter><EditOrder/> </PrivateRouter>
   
   } />
  

@@ -39,3 +39,20 @@
     padding: 2rem;
     
   }
+
+  .boxcheckout{
+    border: solid rgba(202, 197, 197, 0.701) 0.002rem;
+  }
+.checkoutfont{
+    font-family:Georgia, 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    color: black;
+    font-weight:bold;
+}
+
+.checkoutfonttext{
+    font-family:Georgia, 'Times New Roman', Times, serif, Helvetica, sans-serif, 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    color: black;
+    font-weight:bold;
+}
