@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchorder } from './OrderAction'
 import { useParams } from 'react-router-dom'
 import { setShowModal } from '../../system/SystemSlice'
+import { CustomModal } from '../../components/custom-modal/CustomeModal'
+import { Editordertable } from './Editordertable'
 
-export const EditOrder = () => {
+export const EditOrder = ({selectCat}) => {
 const [paymentname, setpaymentname] = useState({})
 
   const dispatch = useDispatch()
@@ -68,6 +70,10 @@ const onPaymentMNameChange = (e)=>{
         </Row>
 
       <Row className='mt-3 py-3'>
+      <CustomModal show={false} title="Update category">
+
+        <Editordertable selecteCat={selectCat} />
+      </CustomModal>
       <Table striped bordered hover>
       <thead>
         <tr>
