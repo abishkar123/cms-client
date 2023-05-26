@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchorder } from './OrderAction';
+import { deleteorderAction, fetchorder } from './OrderAction';
 import { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
@@ -14,6 +14,12 @@ export const OrderTable =()=> {
 
     // const filterused = orders.length? orders.find((item)=>item._id === _id):[]
     // console.log(filterused)
+
+    const handleOnDelete = (_id) => {
+      if (window.confirm("Are you sure you want to delete this Order?")) {
+        dispatch(deleteorderAction(_id));
+      }
+    };
    
     useEffect(()=>{
          dispatch(fetchorder())
@@ -50,10 +56,11 @@ orders.map((item, i)=>(
   
 
     <td> <Link to={`/order/${item._id}`}>
-                <Button variant="warning">
-                  <i className="fa-solid fa-pen-to-square" title='View Order'></i>
-                </Button></Link> 
+       <Button variant="warning"><i className="fa-solid fa-pen-to-square" title='View Order'></i></Button></Link> {" "}
+       <Button onClick={()=>handleOnDelete(item?._id)}
+       variant='danger'> <i class="fa-solid fa-trash"title='Delete Order' ></i> </Button>
              </td>
+    
    
 
 

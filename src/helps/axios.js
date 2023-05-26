@@ -305,3 +305,14 @@ export const getOrder= async (data) => {
   return fetchProcesser(obj);
 };
 
+
+export const deleteorder= async (data) => {
+  const url = orderApi;
+  const obj = {
+    method: "delete",
+    url,
+    data,
+    isPrivate:true,
+  };
+  return fetchProcesser(obj);
+};
