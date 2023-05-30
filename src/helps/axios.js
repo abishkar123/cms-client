@@ -306,12 +306,12 @@ export const getOrder= async (data) => {
 };
 
 
-export const deleteorder= async (data) => {
-  const url = orderApi;
+
+export const deleteorder = async (_id) => {
+  const url = orderApi + "/" + _id;
   const obj = {
     method: "delete",
     url,
-    data,
     isPrivate:true,
   };
   return fetchProcesser(obj);

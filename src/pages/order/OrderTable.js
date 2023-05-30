@@ -9,7 +9,9 @@ export const OrderTable =()=> {
 
     const dispatch = useDispatch()
     const {orders} = useSelector((state)=>state.order)
+
     const { cart, payementDetails, ...rest} = orders
+    
     // const {_id} = useParams()
 
     // const filterused = orders.length? orders.find((item)=>item._id === _id):[]
@@ -45,13 +47,12 @@ export const OrderTable =()=> {
 {orders?.length > 0 && 
 orders.map((item, i)=>(
  <tr key={item?._id}>
-    
     <td>{i+1}</td>
-    <td>{item.cart.length}</td>
+    <td>{item.cart?.length}</td>
     <td>{item.fname}</td>
     <td>{item.lname}</td>
     <td>{item.email}</td>
-    <td>{item.paymentDetails?.paymentStatus}</td>
+    <td>{item.paymentDetails?.isPaid}</td>
     <td>${item.paymentDetails?.totalAmount}</td>
   
 

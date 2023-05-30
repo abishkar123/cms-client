@@ -17,7 +17,7 @@ const [paymentname, setpaymentname] = useState({})
     dispatch(fetchorder())
   },[dispatch])
 const {orders} = useSelector((state)=>state.order)
- console.log(orders)
+
 const{_id}=useParams()
 // const {_id, ...rest} = orders
 const fillteredorder= orders.length? orders.find((item)=>item._id === _id):[]
@@ -87,7 +87,7 @@ const onPaymentMNameChange = (e)=>{
       <tbody>
         <tr>
           <td>{fillteredorder.paymentDetails?.paymentmethods}</td>
-          <td>{fillteredorder.cart.length}</td>
+          <td>{fillteredorder.cart?.length}</td>
           <td>{fillteredorder.paymentDetails?.totalAmount}</td>
           <td>
           

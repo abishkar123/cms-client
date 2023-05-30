@@ -5,6 +5,7 @@ import {setOrders} from "./OrderSlice"
 
 export const fetchorder = () => async (dispatch)=>{
     const{ status, order} = await getOrder();
+   
   
 
     status === "success" && dispatch(setOrders(order))
@@ -13,6 +14,7 @@ export const fetchorder = () => async (dispatch)=>{
 
 export const deleteorderAction = (_id) => async (dispatch) => {
     const resultPending = deleteorder(_id);
+   
   
     toast.promise(resultPending, {
       pending: "please wait ....",
