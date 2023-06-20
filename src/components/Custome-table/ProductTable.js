@@ -81,7 +81,7 @@ const handleOnChange =(e)=>{
         <option value="">Inactive</option>
       </select>
     </div>
-    <div>{showproduct.length} Payment Method found !</div>
+    <div>{showproduct.length} product Found !</div>
       <div className='d-flex align-items-centerss'>
         <label> Search:</label>{""}
         <Form.Control
@@ -121,7 +121,7 @@ const handleOnChange =(e)=>{
 
               <td>
                 <img
-                  src={process.env.REACT_APP_DOMAIN + item?.mainImage.substr(6)}
+                  src={item?.mainImage}
                   width="80px"
                   alt="photos"
                 />

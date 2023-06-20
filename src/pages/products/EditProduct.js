@@ -218,7 +218,7 @@ export const EditProduct = () => {
                     name="mainImage"
                     value={item}
                     onChange={handleOnChange}
-                    checked={item === formDt.mainImage}
+                    checked={item === formDt.images}
                   />{" "}
                   <label htmlFor="">Main Image</label>
                 </div>
@@ -226,7 +226,7 @@ export const EditProduct = () => {
                 <img
                   key={i}
                   className="border p-2"
-                  src={process.env.REACT_APP_DOMAIN + item.substr(6)}
+                  src={item?.formDt?.images}
                   width="120px"
                   alt="product"
                 />
